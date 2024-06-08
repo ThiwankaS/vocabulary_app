@@ -8,19 +8,37 @@ import { useEffect } from 'react'
 import { myQuestions } from './temp.js'
 import { useSelector, useDispatch } from 'react-redux'
 import { setQuestions } from './gameReducer'
+import { setStreak } from './progressReducer.js'
 
 function HomePage () {
     const dispatch = useDispatch();
     const open = useSelector((state) => state.game.open);
-    const selectedQuestionNumber = useSelector((state) => state.game.selectedQuestionNumber);
-    const selectedQuestion = useSelector((state) => state.game.selectedQuestion);
-    const result = useSelector((state) => state.game.result);
     const questions = useSelector((state) => state.game.questions);
     
     useEffect(()=>{
         dispatch(setQuestions(myQuestions));
     },[dispatch]);
- 
+
+    useEffect(() => {
+        const streak = myQuestions.reduce((result,item) => {
+            const obj = {
+                id : item.id,
+                status : 'pending',
+                color : '#ffd64f'
+            }
+            return result.concat(obj);
+        },[]);
+        dispatch(setStreak(streak));
+    },[dispatch]);
+
+    const handleReSetClick = () => {
+        window.alert('Funtionality still note implemented');
+    }
+
+    const handleSaveClick = () => {
+        window.alert('Funtionality still note implemented');
+    }
+
     return (
         <Container sx={{ border: 1,flexGrow: 1 }}>
             <h1> Finnish - English Word Game </h1>
@@ -30,7 +48,7 @@ function HomePage () {
                             <Grid xs={1} key={index}>
                                 <GameButton 
                                     index={index}
-                                    color={ q.progress === 'pending' ? '#ffd64f' : q.progress === 'success' ? '#aoff12' : ''}
+                                    id={q.id}
                                 />
                             </Grid>
                         ))}
@@ -42,12 +60,12 @@ function HomePage () {
             <Box>
                 <Grid container justifyContent="flex-start" spacing={2} sx={{ paddingTop : 3, paddingBottom : 3}}>
                     <Grid>
-                        <Button variant="contained" sx={{ width : 120, height : 45}}>
+                        <Button onClick={handleReSetClick} variant="contained" sx={{ width : 120, height : 45}}>
                             Re-start
                         </Button>
                     </Grid>
                     <Grid>
-                        <Button variant="contained" sx={{ width : 120, height : 45}}>
+                        <Button  onClick={handleSaveClick} variant="contained" sx={{ width : 120, height : 45}}>
                             Save
                         </Button>
                     </Grid>

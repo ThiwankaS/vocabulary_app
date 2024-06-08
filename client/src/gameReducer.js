@@ -4,7 +4,7 @@ const initialState = {
   open: false, // Question window state
   selectedQuestionNumber: 0, // Current question index
   selectedQuestion: {}, // Current question details
-  questions: [], // Array of question objects (likely imported from temp.js)
+  questions: [], // Array of question objects (imported from temp.js)
   result : false
 };
 
@@ -26,13 +26,6 @@ const gameSlice = createSlice({
     },
     setResult(state, action){
       state.result = action.payload;
-    },
-    updateProgress (state, action) {
-      const { id, finalResult } = action.payload;
-      const questionToUpdate = state.questions.find(n => n.id === id);
-      const updatedQuestion = { ...questionToUpdate, progress : 'success'};
-      console.log('updatedQuestion : ', updatedQuestion);
-      setQuestions(state.questions.map(q => q.id !== id ? q : updatedQuestion)); 
     }
   },
 });
@@ -42,8 +35,7 @@ export const {
   setSelectedQuestionNumber,
   setSelectedQuestion,
   setQuestions,
-  setResult,
-  updateProgress
+  setResult
 } = gameSlice.actions;
 
 export default gameSlice.reducer;

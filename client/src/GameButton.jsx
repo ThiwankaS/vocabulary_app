@@ -1,12 +1,12 @@
 import Button from '@mui/material/Button'
 import { useDispatch,useSelector } from 'react-redux'
-import { setOpen, setSelectedQuestionNumber, setQuestions, setSelectedQuestion } from './gameReducer'
+import { setOpen, setSelectedQuestionNumber, setSelectedQuestion } from './gameReducer'
 
-function GameButton ({ index,color }) {
+function GameButton ({ index, id }) {
     const dispatch = useDispatch();
     const questions = useSelector((state) => state.game.questions);
-    const selectedQuestion = useSelector((state) => state.game.selectedQuestion);
-
+    const progress = useSelector((state) => state.progress.streak);
+    const onFocus = progress.find(p => p.id === id);
 
     const handleClick = (index) => {
         console.log('clicked', index);
@@ -19,7 +19,7 @@ function GameButton ({ index,color }) {
         <Button 
             variant="outlined" 
             onClick={() => handleClick(index)}
-            sx={{ padding : 2,backgroundColor: color}}
+            sx={{ padding : 2, backgroundColor:  onFocus.color}}
         >
             {index + 1}
         </Button>

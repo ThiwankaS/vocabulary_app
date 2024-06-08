@@ -3,13 +3,12 @@ import Grid from '@mui/system/Unstable_Grid'
 import Radio from '@mui/material/Radio'
 import RadioGroup from '@mui/material/RadioGroup'
 import FormControlLabel from '@mui/material/FormControlLabel'
-import FormControl from '@mui/material/FormControl'
-import FormLabel from '@mui/material/FormLabel'
 import Button from '@mui/material/Button'
 import Alert from '@mui/material/Alert'
 import { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { setOpen, setSelectedQuestionNumber, setQuestions, setResult, updateProgress} from './gameReducer'
+import { setOpen, setResult } from './gameReducer'
+import { updateProgress } from './progressReducer'
 
 
 function Question () {
@@ -20,7 +19,6 @@ function Question () {
     const [showAlert,setShowAlert] = useState(false);
 
     const selectedQuestion = useSelector((state) => state.game.selectedQuestion);
-    const selectedQuestionNumber = useSelector((state) => state.game.selectedQuestionNumber);
     const result = useSelector((state) => state.game.result);
 
     const handleChange = (event) => {
@@ -30,17 +28,23 @@ function Question () {
         setShowAlert(true);
         if(selectedOption === selectedQuestion.correctAnswer){
             dispatch(setResult(true));
-            const finalResult = 'success';
-            const id = selectedQuestion.id;
-            dispatch(updateProgress({ id, finalResult }))
+            const result = {
+                id : selectedQuestion.id,
+                color : '#a0ff12', 
+                status : 'success'
+            }
+            dispatch(updateProgress(result));
         } else {
             dispatch(setResult(false));
-            const finalResult = 'fail';
-            const id = selectedQuestion.id;
-            dispatch(updateProgress({ id, finalResult }))
+            const result = {
+                id : selectedQuestion.id,
+                color : '#fa794d', 
+                status : 'fail'
+            }
+            dispatch(updateProgress(result));
         }
     }
-    
+
     return(
         <Box>
             <Grid>
