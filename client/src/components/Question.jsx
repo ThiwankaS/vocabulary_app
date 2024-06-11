@@ -1,15 +1,18 @@
-import Box from '@mui/system/Box'
-import Grid from '@mui/system/Unstable_Grid'
-import Radio from '@mui/material/Radio'
-import RadioGroup from '@mui/material/RadioGroup'
-import FormControlLabel from '@mui/material/FormControlLabel'
-import Button from '@mui/material/Button'
-import Alert from '@mui/material/Alert'
-import { useState } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
-import { setOpen, setResult } from './gameReducer'
-import { updateProgress } from './progressReducer'
-
+import { useState } from 'react';
+import { 
+        useSelector, 
+        useDispatch } from 'react-redux';
+import { 
+        setOpen,
+        setResult } from '../reducers/gameReducer';
+import { updateProgress } from '../reducers/progressReducer';
+import Box from '@mui/system/Box';
+import Grid from '@mui/system/Unstable_Grid';
+import Radio from '@mui/material/Radio';
+import RadioGroup from '@mui/material/RadioGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Button from '@mui/material/Button';
+import Alert from '@mui/material/Alert';
 
 function Question () {
 

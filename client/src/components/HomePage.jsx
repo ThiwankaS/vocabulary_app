@@ -1,14 +1,16 @@
-import Container from '@mui/material/Container'
-import Box from '@mui/system/Box'
-import Grid from '@mui/system/Unstable_Grid'
-import GameButton from './GameButton'
-import Button from '@mui/material/Button'
-import QuestionPrompt from './QuestionPrompt'
-import { useEffect } from 'react'
-import { myQuestions } from './temp.js'
-import { useSelector, useDispatch } from 'react-redux'
-import { setQuestions } from './gameReducer'
-import { setStreak } from './progressReducer.js'
+import { useEffect } from 'react';
+import { myQuestions } from '../temp.js';
+import { 
+        useSelector,
+        useDispatch } from 'react-redux';
+import { setQuestions } from '../reducers/gameReducer.js';
+import { setStreak } from '../reducers/progressReducer.js';
+import Container from '@mui/material/Container';
+import Box from '@mui/system/Box';
+import Grid from '@mui/system/Unstable_Grid';
+import GameButton from './GameButton.jsx';
+import Button from '@mui/material/Button';
+import QuestionPrompt from './QuestionPrompt.jsx';
 
 function HomePage () {
     const dispatch = useDispatch();
