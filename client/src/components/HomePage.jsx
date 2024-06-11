@@ -1,5 +1,4 @@
 import { useEffect } from 'react';
-import { myQuestions } from '../temp.js';
 import { 
         useSelector,
         useDispatch } from 'react-redux';
@@ -12,25 +11,32 @@ import GameButton from './GameButton.jsx';
 import Button from '@mui/material/Button';
 import QuestionPrompt from './QuestionPrompt.jsx';
 
+import { getQuestions } from '../services/questions.js';
+
 function HomePage () {
     const dispatch = useDispatch();
     const open = useSelector((state) => state.game.open);
     const questions = useSelector((state) => state.game.questions);
-    
-    useEffect(()=>{
-        dispatch(setQuestions(myQuestions));
-    },[dispatch]);
 
     useEffect(() => {
-        const streak = myQuestions.reduce((result,item) => {
-            const obj = {
-                id : item.id,
-                status : 'pending',
-                color : '#ffd64f'
-            }
-            return result.concat(obj);
-        },[]);
-        dispatch(setStreak(streak));
+        const fetchData = async () => {
+            try {
+                const myQuestions = await getQuestions();
+                dispatch(setQuestions(myQuestions));
+                const streak = myQuestions.reduce((result,item) => {
+                    const obj = {
+                        id : item.id,
+                        status : 'pending',
+                        color : '#ffd64f'
+                    }
+                    return result.concat(obj);
+                },[]);
+                dispatch(setStreak(streak));
+            } catch (error){
+                console.error('Error iside effect :',error);
+            } 
+        }
+        fetchData();
     },[dispatch]);
 
     const handleReSetClick = () => {
