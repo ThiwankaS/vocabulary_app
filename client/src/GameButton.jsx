@@ -1,6 +1,12 @@
 import Button from '@mui/material/Button'
 import { useDispatch,useSelector } from 'react-redux'
 import { setOpen, setSelectedQuestionNumber, setSelectedQuestion } from './gameReducer'
+import PropTypes from 'prop-types';
+
+GameButton.propTypes = {
+    index: PropTypes.number.isRequired,
+    id: PropTypes.number.isRequired,
+};
 
 function GameButton ({ index, id }) {
     const dispatch = useDispatch();
