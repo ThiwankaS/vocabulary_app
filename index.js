@@ -1,7 +1,8 @@
 const express = require ('express');
-const cors = require('cors');
+const cors = require('cors')
 
 const app = express();
+app.use(express.json());
 app.use(cors());
 
 
@@ -83,7 +84,7 @@ app.get('/',(resquet,response) => {
 });
 
 app.get('/api/questions',(resquet,response) => {
-    response.json(myQuestions);
+    response.status(200).json(myQuestions);
 });
 
 const PORT = 3001;
