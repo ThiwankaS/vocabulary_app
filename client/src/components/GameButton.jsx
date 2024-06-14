@@ -10,7 +10,7 @@ import {
 
 GameButton.propTypes = {
     index: PropTypes.number.isRequired,
-    id: PropTypes.number.isRequired,
+    id: PropTypes.string.isRequired,
 };
 
 function GameButton ({ index, id }) {

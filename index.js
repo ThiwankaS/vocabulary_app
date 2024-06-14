@@ -60,24 +60,23 @@ const myQuestions = [ // initial data to add in to the DB
     },
 ];
 
-async function run () {
-    const question = new Question({
-        word : 'Test',
-        correctAnswer : 'Test',
-        options : ['Test01','Test02','Test03','Test04','Test05']
-    });
-    await question.save();
-    console.log('Question added sucessfully!');
-};
-
-run();
-
 app.get('/',(resquet,response) => {
     response.send('<h1>Hello World</h2>');
 });
 
 app.get('/api/questions',(resquet,response) => {
-    response.status(200).json(myQuestions);
+    Question.find({})
+    .then(questions =>{
+        if(questions){
+            response.json(questions);
+        } else {
+            response.status(404).end();
+        }
+    })
+    .catch(error => {
+        console.log(error)
+        response.status(500).end()
+    })
 });
 
 const PORT = process.env.PORT;
