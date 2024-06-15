@@ -1,24 +1,23 @@
-import { myQuestions } from './temp.js'
-
-const testArray = myQuestions.reduce((result,item) => {
-    const obj = {
-        id : item.id,
-        status : 'pending',
-        color : '#ffd64f'
+const myArray = [
+    {
+        _id : "666c424af112ec251f9471ea ",
+        word : "Minä",
+        correctAnswer :"Me",
+        options :["She","He","Me","You","They"],
+        __v: { "$numberInt":"0" }
     }
-    return result.concat(obj);
-},[]);
+];
 
-function updateProgress (id, result, status) {
-    const streakToUpdate = testArray.find(n => n.id === id);
-    const updatedStreakItem = { ...streakToUpdate, color : result, status : status };
-    return testArray.map(q => q.id === id ? updatedStreakItem : q);
+function formatStter(array){
+    return array.map(item => {
+        const temp = {
+            id : item._id,
+            word : item.word,
+            correctAnswer : item.correctAnswer,
+            options : item.options
+        }
+        return temp;
+    });
 }
 
-const id = 125211;
-const result = '#a0ff12';
-const status = 'success';
-
-const updatedArray = updateProgress(id, result, status);
-
-console.log('updatedArray : ', updatedArray);
+console.log('My Array : ', formatStter(myArray));
