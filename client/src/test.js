@@ -14,7 +14,8 @@ function formatStter(array){
             id : item._id,
             word : item.word,
             correctAnswer : item.correctAnswer,
-            options : item.options
+            options : item.options,
+            version : '0.0.1'
         }
         return temp;
     });
