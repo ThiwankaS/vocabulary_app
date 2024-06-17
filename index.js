@@ -2,11 +2,11 @@ require('dotenv').config()
 const express = require ('express');
 const cors = require('cors');
 const Question = require('./server/question');
-const { request } = require('http');
 
 const app = express();
 app.use(express.json());
 app.use(cors());
+app.use(express.static('dist'))
 
 const myQuestions = [ // initial data to add in to the DB
     /*{   
@@ -447,7 +447,7 @@ app.get('/api/questions/:limit',(request, response) => {
     })
 });
 
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 3001;
 
 app.listen(PORT,() => {
     console.log(`Server running on ${PORT}`);

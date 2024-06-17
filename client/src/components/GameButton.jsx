@@ -20,7 +20,6 @@ function GameButton ({ index, id }) {
     const onFocus = progress.find(p => p.id === id);
 
     const handleClick = (index) => {
-        console.log('clicked', index);
         dispatch(setOpen(true));
         dispatch(setSelectedQuestionNumber(index));
         dispatch(setSelectedQuestion(questions[index]));
