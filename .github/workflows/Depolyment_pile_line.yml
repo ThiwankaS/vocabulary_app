@@ -17,3 +17,11 @@ jobs:
           node-version: "20"
       - name: Install dependencies for srever
         run: npm install
+      - name: Install dependencies for client
+        run: npm run initiate
+      - name: Lint
+        run: npm run eslint
+      - name: Build
+        run: npm run build:ui
+      - name: Start the App
+        run: npm run start

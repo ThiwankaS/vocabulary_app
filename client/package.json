@@ -4,10 +4,11 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "initiate" : "cd ../client && npm install",
     "dev": "vite",
     "build": "vite build",
     "build:ui" : "rm -rf dist && cd ../client/ && npm run build && cp -r dist ../",
-    "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
+    "lint": "cd ../client && eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
   "dependencies": {
