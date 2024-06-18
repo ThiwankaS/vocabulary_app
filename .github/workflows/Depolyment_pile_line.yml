@@ -18,7 +18,7 @@ jobs:
       - name: Install dependencies for srever
         run: npm install
       - name: Install dependencies for client
-        run: npm run initiate
+        run: cd ../client && npm install
       - name: Lint
         run: npm run eslint
       - name: Build
