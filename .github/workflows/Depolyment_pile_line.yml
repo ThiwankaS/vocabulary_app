@@ -6,9 +6,14 @@ on:
       - master
 
 jobs:
-  hello_world_job:
+  Stting_Up_environment:
     runs-on: ubuntu-20.04
+    permissions:
+      contents: write
     steps:
-      - name: Say hello
-        run: |
-          echo "Hello World!"
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Install dependencies for srever
+        run: npm install
