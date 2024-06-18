@@ -22,7 +22,7 @@ jobs:
           cd client && npm install
       - name: Lint
         run: |
-          cd client && npm run eslint
+          cd client && npm run lint
       - name: Build
         run: |
           cd client && npm run build:ui
