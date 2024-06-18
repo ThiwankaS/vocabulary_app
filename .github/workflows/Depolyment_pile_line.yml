@@ -20,3 +20,11 @@ jobs:
       - name: Install dependencies for client
         run: |
           cd client && npm install
+      - name: Lint
+        run: |
+          cd client && npm run eslint
+      - name: Build
+        run: |
+          cd client && npm run build:ui
+      - name: Start the app
+        run: npm run start
