@@ -6,7 +6,7 @@ on:
       - master
 
 jobs:
-  Stting_Up_environment:
+  Setting_Up_environment:
     runs-on: ubuntu-20.04
     permissions:
       contents: write
