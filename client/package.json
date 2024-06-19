@@ -4,7 +4,6 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "initiate" : "cd ../client && npm install",
     "dev": "vite",
     "build": "vite build",
     "build:ui" : "rm -rf dist && cd ../client/ && npm run build && cp -r dist ../",
