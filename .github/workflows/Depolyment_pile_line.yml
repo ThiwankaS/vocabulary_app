@@ -28,3 +28,5 @@ jobs:
           cd client && npm run build:ui
       - name: Start the app
         run: npm run start
+        env:
+          MONGODB_URI: ${{ secrets.MONGODB_URI }}
