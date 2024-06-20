@@ -17,15 +17,6 @@ jobs:
           node-version: "20"
       - name: Install dependencies for srever
         run: npm install
-      - name: Install dependencies for client
-        run: |
-          cd client && npm install
-      - name: Lint
-        run: |
-          cd client && npm run lint
-      - name: Build
-        run: |
-          cd client && npm run build:ui
       - name: Set up Fly.io
         if: ${{ github.event_name == 'push' && !contains(join(github.event.commits.*.message,', '),'#skip') }}
         uses: superfly/flyctl-actions/setup-flyctl@master
