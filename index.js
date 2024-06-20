@@ -5,9 +5,7 @@ const Question = require('./server/question');
 
 const app = express();
 app.use(express.json());
-app.use(cors({
-  origin: ["http://localhost:3000"],
-}));
+app.use(cors());
 app.use(express.static('dist'))
 
 const myQuestions = [ // initial data to add in to the DB
