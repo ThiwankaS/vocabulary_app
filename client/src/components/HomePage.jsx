@@ -21,7 +21,19 @@ function HomePage () {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const myQuestions = await getQuestions();
+                const temp = [
+                    {
+                      word: 'Luonto',
+                      correctAnswer: 'Nature',
+                      options: ['Environment', 'Nature', 'Landscape', 'Country', 'Ecosystem'],
+                    },
+                    {
+                      word: 'Ilmasto',
+                      correctAnswer: 'Climate',
+                      options: ['Climate', 'Season', 'Temperature', 'Forecast', 'Rain'],
+                    }
+                ];
+                const myQuestions = await getQuestions() || temp;
                 dispatch(setQuestions(myQuestions));
                 const streak = myQuestions.reduce((result,item) => {
                     const obj = {
