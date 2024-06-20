@@ -444,7 +444,7 @@ app.get('/api/questions/:limit',(request, response) => {
         }
     })
     .catch(error => {
-        console.log(error)
+        console.log('Error fetching data : ', error.message);
         response.status(500).end()
     })
 });
