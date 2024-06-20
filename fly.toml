@@ -1,17 +1,15 @@
-# fly.toml app configuration file generated for vocabular-app on 2024-06-19T04:28:22+03:00
+# fly.toml app configuration file generated for vocabular-app on 2024-06-20T20:35:23+03:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
-#
+# Version 0.0.1
 
 app = 'vocabular-app'
+primary_region = 'arn'
 
 [build]
 
 [env]
-  PORT = '3000'
-
-[processes]
-  app = 'node index.js'
+  PORT = "3000"
 
 [http_service]
   internal_port = 3000
