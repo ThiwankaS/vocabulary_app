@@ -1,10 +1,24 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+
+const myQuestions = [
+    {
+      word: 'Luonto',
+      correctAnswer: 'Nature',
+      options: ['Environment', 'Nature', 'Landscape', 'Country', 'Ecosystem'],
+    },
+    {
+      word: 'Ilmasto',
+      correctAnswer: 'Climate',
+      options: ['Climate', 'Season', 'Temperature', 'Forecast', 'Rain'],
+    }
+];
+
 const initialState = {
   open: false, // Question window state
   selectedQuestionNumber: 0, // Current question index
   selectedQuestion: {}, // Current question details
-  questions: [], // Array of question objects (imported from temp.js)
+  questions: myQuestions, // Array of question objects (imported from temp.js)
   result : false
 };
 
