@@ -426,7 +426,7 @@ app.get('/api/questions',(resquet,response) => {
 
 app.get('/api/questions/:limit',(request, response) => {
     const limit = parseInt(request.params.limit);
-    Question.find({})
+    Question.aggregate([{ $sample : { size : limit }}])
     .then(questions =>{
         if(questions){
             const result = questions.map(item => {
@@ -444,7 +444,7 @@ app.get('/api/questions/:limit',(request, response) => {
         }
     })
     .catch(error => {
-        console.log('Error fetching data : ', error.message);
+        console.log('Error fetching data : ', error.message)
         response.status(500).end()
     })
 });
