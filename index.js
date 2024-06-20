@@ -426,7 +426,7 @@ app.get('/api/questions',(resquet,response) => {
 
 app.get('/api/questions/:limit',(request, response) => {
     const limit = parseInt(request.params.limit);
-    Question.aggregate([{ $sample : { size : limit }}])
+    Question.find({})
     .then(questions =>{
         if(questions){
             const result = questions.map(item => {
