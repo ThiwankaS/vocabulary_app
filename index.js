@@ -43,25 +43,27 @@ app.get('/api/test',(resquet,response) => {
 });
 
 app.get('/api/questions',(resquet,response) => {
-    Question.find({})
-    .then(questions =>{
+    async function allQuestions () {
+      try {
+        const questions = await Question.find({});
         if(questions){
-            response.json(questions);
+          response.json(questions);
         } else {
-            response.status(404).end();
+          response.status(404).end();
         }
-    })
-    .catch(error => {
-        console.log(error)
-        response.status(500).end()
-    })
+      } catch (error) {
+        console.log('Error fetching data : ', error.message);
+        response.status(500).end();
+      }
+    };
+  allQuestions();
 });
 
 app.get('/api/questions/:limit',(request, response) => {
     const limit = parseInt(request.params.limit);
     async function randomeQuestions (limit) {
       try {
-        const questions = await Question.aggregate([{ $sample : { size : limit }}])
+        const questions = await Question.aggregate([{ $sample : { size : limit }}]);
         if(questions){
           const result = questions.map(item => {
               const temp = {
@@ -80,7 +82,7 @@ app.get('/api/questions/:limit',(request, response) => {
         console.log('Error fetching data : ', error.message)
         response.status(500).end()
       }
-    }
+    };
   randomeQuestions(limit);
 });
 

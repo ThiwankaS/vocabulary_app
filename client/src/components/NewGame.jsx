@@ -3,10 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { 
         useSelector,
         useDispatch } from 'react-redux';
-import { 
-        setQuestions,
-        setOpen
- } from '../reducers/gameReducer.js';
+import { setQuestions } from '../reducers/gameReducer.js';
 import { setStreak } from '../reducers/progressReducer.js';
 import Container from '@mui/material/Container';
 import Box from '@mui/system/Box';
@@ -17,7 +14,7 @@ import QuestionPrompt from './QuestionPrompt.jsx';
 
 import { getQuestions } from '../services/questions.js';
 
-function HomePage () {
+function NewGame () {
     const dispatch = useDispatch();
     const open = useSelector((state) => state.game.open);
     const questions = useSelector((state) => state.game.questions);
@@ -61,7 +58,6 @@ function HomePage () {
             dispatch(setStreak(streak));
         };
         reFetchData();
-        dispatch(setOpen(false));
         navigate('/new');
     }
 
@@ -105,4 +101,4 @@ function HomePage () {
     )
 }
 
-export default HomePage;
+export default NewGame;
