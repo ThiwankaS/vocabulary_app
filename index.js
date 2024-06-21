@@ -10,21 +10,25 @@ app.use(express.static('dist'));
 
 const myQuestions = [
   {   
+      id : '100120',
       word : 'Minä',
       correctAnswer :'Me',
       options :['She','He','Me','You','They']
   },
   {
+      id : '100121',
       word :'Sinä',
       correctAnswer :'You',
       options :['She','He','Me','You','They']
   },
   {
+      id : '100122',
       word :'Hän',
       correctAnswer : 'She/He',
       options :['She/He','We','Me','You','They']
   },
   {
+      id : '100123',
       word :'Opettaja',
       correctAnswer :'Teacher',
       options :['Officer','Friend','Husband','Teacher','Wife']
