@@ -6,6 +6,7 @@ const Question = require('./server/question');
 const app = express();
 app.use(express.json());
 app.use(cors());
+app.use(express.static('dist'));
 
 const myQuestions = [
   {   
@@ -33,7 +34,7 @@ app.get('/',(resquet,response) => {
     response.send('<h1>Finnish English Vocabulary Building App</h2>');
 });
 
-app.get('/test',(resquet,response) => {
+app.get('/api/test',(resquet,response) => {
     response.json(myQuestions);
 });
 
