@@ -71,7 +71,7 @@ function Question () {
                     </RadioGroup>
             </Grid>
             <Grid>
-                { showAlert && (result ? <Alert severity="success" >Congratulations, your answer is correct ! </Alert> : <Alert severity="error"> Sorry, your answer is incorrect !</Alert>)}
+                { showAlert && (result ? (<Alert severity="success" >Congratulations, your answer is correct ! </Alert>) : (<Alert severity="error"> Sorry, your answer is incorrect !</Alert>))}
             </Grid>
             <Grid container justifyContent="flex-start" spacing={2}  sx={{ paddingTop : 3 }}>    
                 <Grid>

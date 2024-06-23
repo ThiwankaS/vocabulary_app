@@ -17,7 +17,7 @@ function GameButton ({ index, id }) {
     const dispatch = useDispatch();
     const questions = useSelector((state) => state.game.questions);
     const progress = useSelector((state) => state.progress.streak);
-    const onFocus = progress.find(p => p.id === id);
+    const onFocus = progress.find(element => element.id === id);
 
     const handleClick = (index) => {
         dispatch(setOpen(true));

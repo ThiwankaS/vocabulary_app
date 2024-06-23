@@ -38,31 +38,34 @@ function HomePage () {
                 },[]);
                 dispatch(setStreak(streak));
             } catch (error){
-                console.error('Error inside effect :',error);
+                console.error('Error inside effect :',error.message);
             } 
-        }
+        };
         fetchData();
     },[dispatch]);
 
     const handleReSetClick = () => {
-        console.log('current questions :', questions);
         const reFetchData = async () => {
-            const newQuestions = await getQuestions();
-            console.log('newQuestions : ',newQuestions);
-            dispatch(setQuestions(newQuestions));
-            const streak = newQuestions.reduce((result,item) => {
-                const obj = {
-                    id : item.id,
-                    status : 'pending',
-                    color : '#ffd64f'
-                }
-                return result.concat(obj);
-            },[]);
-            dispatch(setStreak(streak));
+            try {
+                const newQuestions = await getQuestions();
+                dispatch(setQuestions(newQuestions));
+                const streak = newQuestions.reduce((result,item) => {
+                    const obj = {
+                        id : item.id,
+                        status : 'pending',
+                        color : '#ffd64f'
+                    }
+                    return result.concat(obj);
+                },[]);
+                dispatch(setStreak(streak));
+            
+            } catch (error) {
+                console.error('Error inside effect :',error.message);
+            }
         };
         reFetchData();
         dispatch(setOpen(false));
-        navigate('/new');
+        navigate('/');
     }
 
     const handleSaveClick = () => {

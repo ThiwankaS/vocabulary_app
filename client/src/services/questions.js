@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const baseURL = `/api/questions/20`;
+const baseURL = `http://localhost:3001/api/questions/20`;
 
 const getQuestions = async () => {
     try {
