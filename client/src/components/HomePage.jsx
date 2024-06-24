@@ -15,7 +15,9 @@ import GameButton from './GameButton.jsx';
 import Button from '@mui/material/Button';
 import QuestionPrompt from './QuestionPrompt.jsx';
 
-import { getQuestions } from '../services/questions.js';
+import questionService from '../services/questions.js';
+
+const noOfQuestionsPerSession = 20;
 
 function HomePage () {
     const dispatch = useDispatch();
@@ -26,7 +28,7 @@ function HomePage () {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const myQuestions = await getQuestions();
+                const myQuestions = await questionService.getSelectedQuestions(noOfQuestionsPerSession);
                 dispatch(setQuestions(myQuestions));
                 const streak = myQuestions.reduce((result,item) => {
                     const obj = {
@@ -47,7 +49,7 @@ function HomePage () {
     const handleReSetClick = () => {
         const reFetchData = async () => {
             try {
-                const newQuestions = await getQuestions();
+                const newQuestions = await questionService.getSelectedQuestions(noOfQuestionsPerSession);
                 dispatch(setQuestions(newQuestions));
                 const streak = newQuestions.reduce((result,item) => {
                     const obj = {
