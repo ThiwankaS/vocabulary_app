@@ -1,0 +1,10 @@
+### 
+GET http://localhost:3001/api/questions/1
+
+###
+POST http://localhost:3001/api/questions
+Content-Type: application/json
+
+{
+    "word" : "Hotelli"
+}

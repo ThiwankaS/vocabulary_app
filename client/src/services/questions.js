@@ -13,4 +13,4 @@ const getQuestions = async () => {
 
 export { 
     getQuestions
-}
+};
