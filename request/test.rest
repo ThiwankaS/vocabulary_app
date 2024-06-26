@@ -6,5 +6,8 @@ POST http://localhost:3001/api/questions
 Content-Type: application/json
 
 {
-    "word" : "Hotelli"
+    "word" : "Opettaja"
 }
+
+### 
+GET http://localhost:3001/api/questions
