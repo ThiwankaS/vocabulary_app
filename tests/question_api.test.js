@@ -66,5 +66,5 @@ describe(' Testing api/questions api ', () => {
 });
 
 afterAll(async () => {
-  await mongoose.connection.close()
+  await mongoose.connection.close();
 });
