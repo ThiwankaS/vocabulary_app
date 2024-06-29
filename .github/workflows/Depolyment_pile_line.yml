@@ -24,7 +24,7 @@ jobs:
         run: |
           cd client && npm run lint
       - name: Testing backend
-        run: cd vocabular_app && npm run test
+        run: npm run test
       - name: Building the UI
         run: |
           cd client && npm run build:ui
