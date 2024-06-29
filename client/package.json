@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "NODE_ENV=development vite",
     "build": "vite build",
     "build:ui": "rm -rf dist && cd ../client/ && npm run build && cp -r dist ../",
     "lint": "cd ../client && eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
