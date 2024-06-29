@@ -12,9 +12,12 @@ mongoose.set('strictQuery',false);
 
 const mongoUrl = config.MONGODB_URI;
 
-mongoose.connect(mongoUrl).then(()=>{
+async function run () {
+    await mongoose.connect(mongoUrl);
     logger.info('DB connection sucessful!');
-});
+};
+
+run();
 
 app.use(cors());
 app.use(express.json());

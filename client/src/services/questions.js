@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const baseURL = `http://localhost:3001/api/questions`;
+const baseURL = `api/questions`;
 
 const getSelectedQuestions = async (limit) => {
     try {

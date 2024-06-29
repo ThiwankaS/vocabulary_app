@@ -23,6 +23,8 @@ jobs:
       - name: Linting UI
         run: |
           cd client && npm run lint
+      - name: Testing backend
+        run: npm run test
       - name: Building the UI
         run: |
           cd client && npm run build:ui
