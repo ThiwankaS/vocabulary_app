@@ -25,6 +25,8 @@ jobs:
           cd client && npm run lint
       - name: Testing backend
         run: npm run test
+        env:
+          TEST_MONGODB_URI: ${{ secrets.TEST_MONGODB_URI }}
       - name: Building the UI
         run: |
           cd client && npm run build:ui
