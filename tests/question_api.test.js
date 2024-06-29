@@ -58,7 +58,7 @@ describe(' Testing api/questions api ', () => {
     expect(respone.body[0].id).toBeDefined();
   });
 
-  test('- questions returned are in required format', async () => {
+  test('- questions returned are in standard format', async () => {
     const respone = await api.get(`/api/questions`);
     expect(respone.body.includes(initialQuestions[0]));
   });
