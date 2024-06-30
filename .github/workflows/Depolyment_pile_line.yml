@@ -30,6 +30,12 @@ jobs:
       - name: Building the UI
         run: |
           cd client && npm run build:ui
+      - name: e2e tests
+        uses: cypress-io/github-action@v5
+        with:
+          command: npm run test:e2e
+          start: npm run start
+          wait-on: http://localhost:3001
       - name: Set up Fly.io
         if: ${{ github.event_name == 'push' && !contains(join(github.event.commits.*.message,', '),'#skip') }}
         uses: superfly/flyctl-actions/setup-flyctl@master
