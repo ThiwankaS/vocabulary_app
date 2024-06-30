@@ -36,7 +36,7 @@ jobs:
           MONGODB_URI: ${{ secrets.MONGODB_URI }}
         with:
           command: npm run test:e2e
-          start: npm run start:test
+          start: npm run start
           wait-on: http://localhost:3001
       - name: Set up Fly.io
         if: ${{ github.event_name == 'push' && !contains(join(github.event.commits.*.message,', '),'#skip') }}
