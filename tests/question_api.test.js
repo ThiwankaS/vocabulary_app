@@ -1,3 +1,4 @@
+const TextEncoder = require('text-encoding').TextEncoder;
 const mongoose = require('mongoose');
 mongoose.set('bufferTimeoutMS', 30000);
 const supertest = require('supertest');
