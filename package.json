@@ -5,11 +5,11 @@
   "main": "index.js",
   "scripts": {
     "start": "NODE_ENV=production node index.js",
-    "start:test": "NODE_ENV=test node index.js",
+    "start:test": "node index.js",
     "dev": "NODE_ENV=development nodemon index.js",
     "test": "NODE_ENV=test jest tests/question_api.test.js",
     "deploy:fly": "flyctl deploy",
-    "test:e2e": "cypress run --e2e"
+    "test:e2e": "NODE_ENV=test cypress run --e2e"
   },
   "author": "Thiwanka Somachandra",
   "license": "MIT",
