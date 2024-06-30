@@ -34,6 +34,7 @@ jobs:
         uses: cypress-io/github-action@v5
         env:
           PORT: ${{ secrets.PORT }}
+          MONGODB_URI: ${{ secrets.MONGODB_URI }}
         with:
           command: npm run test:e2e
           start: npm run start
