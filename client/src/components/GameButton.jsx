@@ -26,7 +26,8 @@ function GameButton ({ index, id }) {
     }
 
     return (
-        <Button 
+        <Button
+            id='`${id}`'
             variant="outlined" 
             onClick={() => handleClick(index)}
             sx={{ padding : 2, backgroundColor:  onFocus.color}}
